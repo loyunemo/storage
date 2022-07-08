@@ -23,14 +23,15 @@ if __name__ == '__main__':
     assert np.max(b[:, :, :, 1]) < W1
 
     # Call Bilinear Interpolation Implementations
-    print('Executing Baseline Implementation...')
-    baseline_result, baseline_time = time_function(bilinear_interp_baseline, a, b)
-    print(f'Finished in {baseline_time}s')
+    
 
     print('Executing Vectorized Implementation...')
     vectorized_result, vectorized_time = time_function(bilinear_interp_vectorized, a, b)
     print(f'Finished in {vectorized_time}s')
 
+    print('Executing Baseline Implementation...')
+    baseline_result, baseline_time = time_function(bilinear_interp_baseline, a, b)
+    print(f'Finished in {baseline_time}s')
     # Check Results
     if not np.array_equal(baseline_result, vectorized_result):
         raise Exception('Results are different!')
